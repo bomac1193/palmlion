@@ -1,43 +1,59 @@
 # Palmlion
 
-## African Music Analytics & Conviction Scoring Engine
-
-> **Target:** African superfans, music analytics, conviction scoring
-> **Markets:** Lagos, Nairobi, Johannesburg, Accra, Kampala
-> **Excludes:** Casual listeners, passive Western APIs that extract African streams
+**The conviction layer for African music.**
 
 ---
 
-## Overview
+## Diagnosis
 
-Palmlion is the **African data fortress** - a conviction scoring engine that verifies superfan dedication via African-first streaming platforms, social proof, and telco verification.
+Western streaming platforms extract billions in value from African music while returning almost nothing. Spotify, Apple Music, and YouTube treat African streams as second-class data—aggregated, anonymized, exported. Artists don't know their real fans. Fans can't prove their dedication. The infrastructure for superfan economies doesn't exist on the continent.
 
-### Mission
-African data. African sovereignty. We don't let Western platforms extract African streaming value without giving back.
+Meanwhile, African-native platforms (Boomplay, Audiomack, MTN Music) have the data but no mechanism to surface conviction—the measurable, verifiable dedication that separates superfans from casual listeners.
+
+## Guiding Policy
+
+Build the conviction scoring engine where African music actually lives. Weight African-first platforms highest. Verify through telco infrastructure. Keep the data sovereign.
+
+## Strategy
+
+1. **Conviction Scoring** — Quantify fan dedication across Boomplay, Audiomack, MTN Music, WhatsApp, and Telegram. African platforms weighted higher than extractive Western APIs. Score = Σ(Action × Platform Weight × Time Decay).
+
+2. **Palmlion Missions** — Distributed challenges via Telegram and WhatsApp that generate verifiable proof-of-fandom: stream targets, social sharing, community engagement. Each completed mission compounds conviction score.
+
+## Divergence
+
+| Competitors | Palmlion |
+|-------------|----------|
+| Aggregate global streams | Weight African-native platforms highest |
+| Anonymous listener counts | Named, verified superfans via telco OTP |
+| Data exported to Western APIs | Data stays sovereign, exported only to African artist dashboards |
+| Passive analytics | Active missions that reward and verify dedication |
+| One global leaderboard | Regional leaderboards (Lagos, Nairobi, Joburg, Accra, Kampala) |
 
 ---
 
-## Core Features
+## Quick Start
 
-### Conviction Scoring
+### Backend
+
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate
+pip install -e .
+cp .env.example .env
+uvicorn app.main:app --reload --port 4001
 ```
-Conviction Score = Σ(Action Weight × Platform Weight × Time Decay)
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
 ```
 
-**Platform Weights (African-first):**
-- Boomplay: 1.2x (Highest trust)
-- MTN Music: 1.3x (Telco verification)
-- Audiomack: 1.1x
-- WhatsApp: 1.1x
-- YouTube: 0.9x
-- Twitter: 0.8x (Bot-heavy)
-
-### #PalmDash Missions
-Distributed via Telegram and WhatsApp:
-- Stream challenges
-- Social sharing
-- Community engagement
-- Referral programs
+Dashboard at http://localhost:3001
 
 ---
 
@@ -49,7 +65,7 @@ Distributed via Telegram and WhatsApp:
 ├─────────────────────────────────────────────────────────────────┤
 │  Frontend (Next.js)          │  Backend (FastAPI)              │
 │  ├── Conviction Dashboard    │  ├── /api/v1/auth               │
-│  ├── #PalmDash Missions      │  ├── /api/v1/conviction         │
+│  ├── Palmlion Missions       │  ├── /api/v1/conviction         │
 │  ├── Regional Leaderboards   │  ├── /api/v1/missions           │
 │  └── Streaming Proof         │  ├── /api/v1/verify             │
 │                              │  └── /api/v1/export             │
@@ -69,83 +85,6 @@ Distributed via Telegram and WhatsApp:
 
 ---
 
-## Quick Start
-
-### Backend
-
-```bash
-cd palmlion/backend
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate
-
-# Install dependencies
-pip install -e .
-
-# Copy environment file
-cp .env.example .env
-# Edit with your API keys
-
-# Run server
-uvicorn app.main:app --reload --port 4001
-```
-
-### Frontend
-
-```bash
-cd palmlion/frontend
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-```
-
-Open http://localhost:3001 for the dashboard.
-
----
-
-## API Endpoints
-
-### Authentication
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/v1/auth/register/phone` | Register with African phone |
-| POST | `/api/v1/auth/verify-otp` | Verify OTP |
-| POST | `/api/v1/auth/register/telegram` | Register via Telegram |
-
-### Conviction
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/v1/conviction/score` | User's conviction score |
-| GET | `/api/v1/conviction/breakdown` | Score components |
-| GET | `/api/v1/conviction/leaderboard` | Regional rankings |
-
-### Missions
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/v1/missions` | #PalmDash missions |
-| POST | `/api/v1/missions/{id}/submit` | Submit proof |
-| GET | `/api/v1/missions/{id}/verify` | Check verification |
-
-### Verification
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/v1/verify/boomplay` | Link Boomplay account |
-| POST | `/api/v1/verify/audiomack` | Link Audiomack |
-| POST | `/api/v1/verify/streams` | Verify stream count |
-
-### Export
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/v1/export/conviction/{user_id}` | Export to Convicta |
-| POST | `/api/v1/export/conviction/{user_id}/push` | Push to Convicta webhook |
-| POST | `/api/v1/export/trigger-mint/{user_id}` | Trigger Issuance mint |
-
----
-
 ## Conviction Tiers
 
 | Tier | Min Score | Benefits |
@@ -158,105 +97,19 @@ Open http://localhost:3001 for the dashboard.
 
 ---
 
-## African APIs
+## Platform Weights
 
-### Streaming
-- **Boomplay Partner API** - Africa's largest, 75M+ users
-- **Audiomack Creator API** - Strong in Nigeria, diaspora
-- **MTN Music+ API** - Telco-verified streams
-
-### Social/Verification
-- **Africa's Talking** - SMS OTP across Africa
-- **Telegram Bot API** - #PalmDash distribution
-- **WhatsApp Business API** - High-trust engagement
-
-### Payments
-- **MTN MoMo** - West/Central Africa mobile money
-- **OPay** - Nigeria fintech
-- **M-Pesa** - Kenya/East Africa
-
----
-
-## Design System
-
-### Colors (Pan-African Inspired)
-| Name | Hex | Meaning |
-|------|-----|---------|
-| Palm Gold | `#FFD700` | Achievement, royalty |
-| Kente Green | `#228B22` | Growth, prosperity |
-| Kente Red | `#DC143C` | Passion, energy |
-| Midnight | `#0A0A0A` | Foundation |
-
-### Typography
-- **Display**: Playfair Display (serif)
-- **Body**: Inter (sans-serif)
-- **Metrics**: JetBrains Mono
-
-### Animations
-- **Roar**: Achievement celebration
-- **Palm Grow**: Streak indicator
-- **Conviction Pulse**: Active score
-
----
-
-## Environment Variables
-
-```env
-# App
-DEBUG=true
-SECRET_KEY=your-secret-key
-
-# Database
-DATABASE_URL=postgresql+asyncpg://user:pass@localhost:5432/palmlion
-
-# African Streaming
-BOOMPLAY_API_KEY=
-AUDIOMACK_API_KEY=
-MTN_MUSIC_API_KEY=
-
-# Social
-TELEGRAM_BOT_TOKEN=
-WHATSAPP_BUSINESS_TOKEN=
-AFRICAS_TALKING_API_KEY=
-
-# Payments
-MTN_MOMO_API_KEY=
-OPAY_API_KEY=
-
-# Integration
-CONVICTA_API_URL=http://localhost:8000
-CONVICTA_WEBHOOK_SECRET=
-```
-
----
-
-## Roadmap
-
-### Week 1
-- [x] Backend with conviction scoring
-- [x] Frontend dashboard
-- [ ] Telegram bot for #PalmDash
-
-### Month 1
-- [ ] 100 Lagos elites onboarded
-- [ ] Boomplay OAuth integration
-- [ ] WhatsApp verification
-
-### Month 2-3
-- [ ] Kenya/SA expansion
-- [ ] 1K active users
-- [ ] Proprietary African chart
+| Platform | Weight | Rationale |
+|----------|--------|-----------|
+| MTN Music | 1.3x | Telco-verified, highest trust |
+| Boomplay | 1.2x | Africa's largest (75M+ users) |
+| Audiomack | 1.1x | Strong Nigeria/diaspora presence |
+| WhatsApp | 1.1x | High-trust social proof |
+| YouTube | 0.9x | Global but extractive |
+| Twitter | 0.8x | Bot-heavy, lower signal |
 
 ---
 
 ## License
 
 MIT
-
----
-
-## Links
-
-- **Convicta**: Global elite superfan metrics
-- **Issuance**: Fractional IP minting
-- **API Docs**: http://localhost:4001/docs
