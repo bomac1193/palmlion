@@ -6,7 +6,11 @@
 
 ## Diagnosis
 
-African streaming platforms (Boomplay, Audiomack, MTN Music) have 150M+ users but no infrastructure to identify and score superfans. Artists can't distinguish dedicated fans from casual listeners. Fans can't prove their dedication. The data exists but conviction—measurable, verifiable fan commitment—doesn't surface.
+**Global context:** Streaming pays $0.003–0.005 per play. An artist needs 250,000 streams to earn $1,000. The math only works two ways: go viral or build superfans who buy merch, attend shows, and invest directly. Platforms optimize for passive listening—infinite scroll, algorithmic playlists, lean-back consumption. They surface what's popular, not who cares.
+
+**The gap:** No infrastructure exists to identify, score, or activate superfans. Artists see aggregate stream counts but can't distinguish a fan who played their track once from one who played it 500 times and shared it to 50 people. Fans have no way to prove dedication or get recognized for it. The data exists inside platforms but conviction—measurable, verifiable commitment—never surfaces.
+
+**African context:** Boomplay, Audiomack, and MTN Music have 150M+ combined users across Lagos, Nairobi, Joburg, Accra, Kampala. Same problem, different advantage: telco infrastructure enables phone-verified identity that Western platforms lack. Regional fragmentation means superfans are scattered across platforms with no unified score.
 
 ## Guiding Policy
 
